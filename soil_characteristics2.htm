@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--
+	Interphase by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<title>Services</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<script src="https://js.arcgis.com/4.18/"></script>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+			<link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<style>
+      
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 500px;
+        width: 100%;
+      }    </style>
+		
+		<script> 
+		require(["esri/config","esri/Map", "esri/views/MapView", "esri/layers/FeatureLayer", "esri/widgets/BasemapGallery"], 
+		
+		function (esriConfig,Map, MapView,FeatureLayer, BasemapGallery) {
+
+        esriConfig.apiKey = "AAPK384429ed1a9b42b9b963df9dd620b147_3pkvWUUT4W7zH4dAXKR8z32PYyhqb_-DW4tPnZ6w1KZoeoAY-obSxcO56KLk_jO";
+
+        const map = new Map({
+          basemap: "topo" // Basemap layer service
+        });
+
+        const view = new MapView({
+          map: map,
+          center: [-1.290575, 50.680000], // Longitude, latitude
+          zoom: 11, // Zoom level
+          container: "viewDiv" // Div element
+        });
+        const featureLayer = new FeatureLayer({url:"https://50cr010.sims.cranfield.ac.uk:6443/arcgis/rest/services/Soils/soils/MapServer"});
+        map.add(featureLayer); 
+        
+        const basemapGallery = new BasemapGallery({
+        view: view
+        });
+       view.ui.add(basemapGallery, { position: "top-right"
+	   });
+	   })
+	   </script>
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.htm"><img src="images/iow_council_logo.jpg"></a>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.htm">Home</a></li>
+						<li><a href="about_us.htm">About us</a></li>
+						<li><a href="soil_characteristics.htm">Soil Characteristics</a></li>
+						<li><a href="flood.htm">Flood Warning</a></li>
+						<li><a href="Towns_Roads.htm">Towns and Roads</a></li>
+						<li><a href="Rainfall.htm">Rainfall</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="container">
+
+					<header class="major">
+						<h2>Soil Characteristics</h2>
+						<p></p>
+					</header>
+					<div id="viewDiv"></div>
+					<div id="basemapGalleryDiv"></div></br>
+					
+					<p></p>
+					<p></p>
+					<p></p>
+
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<div class="row">
+						<section class="4u 6u(medium) 12u$(small)">
+							<a href="index.htm"><h2>Home</h2></a>
+					
+							<ul class="alt">
+							    <li><a href="about_us.htm">About us</a></li>
+								<li><a href="index.htm">Weather Forecast</a></li>
+						        
+							</ul>
+						</section>
+						<section class="4u 6u$(medium) 12u$(small)">
+							<a href="index.htm"><h2>Isle of Wight</h2></a>
+							
+							<ul class="alt">
+								<li><a href="Soil Characteristics.htm">Soil Characteristics</a></li>
+						        <li><a href="flood.htm">Flood Warning</a></li>
+						        <li><a href="Towns_Roads.htm">Towns and Roads</a></li>
+						        <li><a href="Rainfall.htm">Rainfall</a></li>
+							</ul>
+						</section>
+						<section class="4u$ 12u$(medium) 12u$(small)">
+							<h3>Contact Us</h3>
+							<ul class="icons">
+								<li><a href="#" class="icon rounded fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon rounded fa-facebook"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon rounded fa-pinterest"><span class="label">Pinterest</span></a></li>
+								<li><a href="#" class="icon rounded fa-google-plus"><span class="label">Google+</span></a></li>
+								<li><a href="#" class="icon rounded fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="tabular">
+								<li>
+									<h3>Address</h3>
+									County Hall<br>
+									High Street<br>
+									Newport<br>
+									Isle of Wight PO30 1UD
+								</li>
+								<li>
+									<h3>Mail</h3>
+									<a href="#">customer.services@iow.gov.uk</a>
+								</li>
+								<li>
+									<h3>Phone</h3>
+									01983 821000
+								</li>
+							</ul>
+						</section>
+					</div>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved 2021.</li>
+						<li>Design: <a href="http://templated.co">&copy; TEMPLATED</a></li>
+						<li>Images: <a href="https://www.goodfon.com/wallpaper/the-needles-isle-of-wight-alum-bay-england-nidls-ostrov-uait.html">&copy; goodfon.com</a></li>
+					</ul>
+				</div>
+			</footer>
+
+	</body>
+</html>

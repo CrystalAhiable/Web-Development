@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--
+	Interphase by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Rainfall</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		
+		<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.5.0/proj4-src.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.js"></script>
+	<script src="js/skel-layers.min.js"></script>
+		 
+ <!-- <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>-->
+  <script src="js/jquery.min.js"></script>
+	<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>	
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+			 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" type="text/css
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+
+<style>
+      #map {
+        height: 600px;
+        width: 100%;
+      }
+    </style>
+
+</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.htm"><img src="images/iow_council_logo.jpg"></a>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.htm">Home</a></li>
+						<li><a href="about_us.htm">About us</a></li>
+						<li><a href="soil_characteristics.htm">Soil Characteristics</a></li>
+						<li><a href="Towns_Roads.htm">Towns and Roads</a></li>
+						<li><a href="Rainfall.htm">Rainfall</a></li>
+						<li><a href="flood.htm">Flood Information</a></li>
+					</ul>
+				</nav>
+			</header></br>
+			
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="container">
+
+					<header class="major">
+						<h2>Rainfall</h2>
+					</header>
+			<div id="map" class="map"></div></br>
+    <script type="text/javascript">
+	// Code for adding openlayer map
+      var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([-1.290575, 50.680000]),
+          zoom: 11
+        })
+      });
+	  // Code for rainfall layer from Geoserver
+	  var wmsSource = new ol.source.ImageWMS({
+		url: 'http://50cr010.sims.cranfield.ac.uk:8080/geoserver/wms',
+		params: {
+			'LAYERS': 'SDI:rainfall'
+		},
+		serverType: 'geoserver',
+		crossOrigin: null // see https://gis.stackexchange.com/questions/113693/openlayers-3-cross-origin-request-blocked-the-same-origin-policy-disallows
+	});
+
+	var layer_rainfall = new ol.layer.Image({
+		source: wmsSource
+	});
+
+	map.addLayer(layer_rainfall);
+
+    </script>
+
+	<!-- Adding Legend -->
+	<div id="legend">
+ <strong>Legend </strong></br>
+ <img src="http://50cr010.sims.cranfield.ac.uk:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=SDI:rainfall&STYLE=rainfall"></img>
+</div>
+<p>In this section we are displaying the possibilities that an approach using open source tools like geoserver and openlayers present in web mapping services. Geoserver is an open source web map server which allows users to publish data freely without having to acquire any license, making it a cheaper option compared to its proprietary competitors. Due to its interoperability features, it is compatible with data from a variety of sources and can be accessed in different formats. In this example, we showcase how Geoserver can be used to add maps to websites and here, we use a rainfall map which was prepared using the Quantum GIS (QGIS) open source software. Although Geoserver provides a wide range in terms of accessibility, Geoserver can be somewhat restrictive in its functionality, hence for a more sophisticated approach, other web servers such as ESRI's ArcGIS Enterprise is preferred. Also, it required more technical skills for its operation, which might make it a rather expensive approach.</p>   
+			</div>
+			</section>
+<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<div class="row">
+						<section class="4u 6u(medium) 12u$(small)">
+							<a href="index.htm"><h2>Home</h2></a>
+					
+							<ul class="alt">
+							    <li><a href="about_us.htm">About us</a></li>
+								<li><a href="index.htm">Weather Forecast</a></li>
+						        
+							</ul>
+						</section>
+						<section class="4u 6u$(medium) 12u$(small)">
+							<a href="index.htm"><h2>Isle of Wight</h2></a>
+							
+							<ul class="alt">
+								<li><a href="soil_characteristics.htm">Soil Characteristics</a></li>
+						        <li><a href="flood.htm">Flood Information</a></li>
+						        <li><a href="Towns_Roads.htm">Towns and Roads</a></li>
+						        <li><a href="Rainfall.htm">Rainfall</a></li>
+							</ul>
+						</section>
+						<section class="4u$ 12u$(medium) 12u$(small)">
+							<h3>Contact Us</h3>
+							<ul class="icons">
+								<li><a href="#" class="icon rounded fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon rounded fa-facebook"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon rounded fa-pinterest"><span class="label">Pinterest</span></a></li>
+								<li><a href="#" class="icon rounded fa-google-plus"><span class="label">Google+</span></a></li>
+								<li><a href="#" class="icon rounded fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="tabular">
+								<li>
+									<h3>Address</h3>
+									County Hall<br>
+									High Street<br>
+									Newport<br>
+									Isle of Wight PO30 1UD
+								</li>
+								<li>
+									<h3>Mail</h3>
+									<a href="#">customer.services@iow.gov.uk</a>
+								</li>
+								<li>
+									<h3>Phone</h3>
+									01983 821000
+								</li>
+							</ul>
+						</section>
+					</div>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved 2021.</li>
+						<li>Design: <a href="http://templated.co">&copy; TEMPLATED</a></li>
+						<li>Images: <a href="https://www.goodfon.com/wallpaper/the-needles-isle-of-wight-alum-bay-england-nidls-ostrov-uait.html">&copy; goodfon.com</a></li>
+					</ul>
+				</div>
+			</footer>
+			
+	</body>
+</html>

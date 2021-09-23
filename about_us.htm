@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!--
+	Interphase by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>About us</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+		<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAczx2nVpK2ifEG4IDm6pZJLszEhJX1Y_k&callback=initMap&li
+braries=&v=weekly"
+5
+defer
+></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>	
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+<style type="text/css">
+/* Always set the map height explicitly to define the size of the div
+* element that contains the map. */
+#map {
+padding: 0;
+margin: ;
+height: 400px;
+width: 100%;
+}
+</style>
+<!--JavaScript code for inserting Google Simple Map-->
+<script>
+function initMap() {
+        const IOW = new google.maps.LatLng(50.700558, -1.290575);
+        const map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: 50.700558, lng: -1.290575 },
+           zoom: 11
+        });
+		<!-- JavaScript code for inserting kml file-->
+		const ctaLayer = new google.maps.KmlLayer({
+          url: "https://raw.githubusercontent.com/CrystalAhiable/IOW4/main/Isle%20of%20Wight%20Council4.kml",
+          map: map,
+        });
+      
+        const coordInfoWindow = new google.maps.InfoWindow();
+        coordInfoWindow.setContent(
+          createInfoWindowContent(IOW, map.getZoom())
+        );
+        coordInfoWindow.setPosition(IOW);
+        coordInfoWindow.open(map);
+        map.addListener("zoom_changed", () => {
+          coordInfoWindow.setContent(
+            createInfoWindowContent(IOW, map.getZoom())
+          );
+          coordInfoWindow.open(map);
+        });
+      }
+      const TILE_SIZE = 256;
+<!-- JavaScript code for inserting pixel coordinates-->
+      function createInfoWindowContent(latLng, zoom) {
+        const scale = 1 << zoom;
+        const worldCoordinate = project(latLng);
+        const pixelCoordinate = new google.maps.Point(
+          Math.floor(worldCoordinate.x * scale),
+          Math.floor(worldCoordinate.y * scale)
+        );
+        const tileCoordinate = new google.maps.Point(
+          Math.floor((worldCoordinate.x * scale) / TILE_SIZE),
+          Math.floor((worldCoordinate.y * scale) / TILE_SIZE)
+        );
+        return [
+          "Isle of Wight Council, Newport, Isle of Wight",
+          "LatLng: " + latLng,
+          "Zoom level: " + zoom,
+          "World Coordinate: " + worldCoordinate,
+          "Pixel Coordinate: " + pixelCoordinate,
+          "Tile Coordinate: " + tileCoordinate,
+        ].join("<br>");
+      }
+
+      // The mapping between latitude, longitude and pixels is defined by the web
+      // mercator projection.
+      function project(latLng) {
+        let siny = Math.sin((latLng.lat() * Math.PI) / 180);
+        // Truncating to 0.9999 effectively limits latitude to 89.189. This is
+        // about a third of a tile past the edge of the world tile.
+        siny = Math.min(Math.max(siny, -0.9999), 0.9999);
+        return new google.maps.Point(
+          TILE_SIZE * (0.5 + latLng.lng() / 360),
+          TILE_SIZE * (0.5 - Math.log((1 + siny) / (1 - siny)) / (4 * Math.PI))
+        );
+      }
+	  
+    </script>	
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				 <a href="index.htm"><img src="images/iow_council_logo.jpg"></a>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.htm">Home</a></li>
+						<li><a href="about_us.htm">About us</a></li>
+						<li><a href="soil_characteristics.htm">Soil Characteristics</a></li>
+						<li><a href="Towns_Roads.htm">Towns and Roads</a></li>
+						<li><a href="Rainfall.htm">Rainfall</a></li>
+						<li><a href="flood.htm">Flood Information</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="container">
+
+					<header class="major">
+						<h2>About us</h2>
+						<p>Web Mapping can be utilized within a website to provide geographical information in the "about us" section of a company's website to provide the public with a visual representation of their location. In this example, we utilize some Google JavaScript Application Programming Interfaces (APIs) to provide locational information about the Isle of Wight council to the general public. In addition, a google kml file has been used to indicate the precise location of the building for easier identification. Google kml files can be used for different application purposes and in the 'Towns and Roads' page, it has been used with leaflet to provide information about some towns in the Isle of Wight.  There are many Google Javascript APIs that add more functionality to the traditional locational maps and in this example we explore one to show pixel coordinates for the Isle of Wight Council.</p>
+					</header>
+
+					<!-- Text -->
+							<h3>Locate us</h3>
+							<p>Address : County Hall, High St, Newport PO30 1UD</p>
+							<div id="map"></div></br><!-- Adding the map to the body -->
+							</div>
+			</section>
+							
+
+	<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<div class="row">
+						<section class="4u 6u(medium) 12u$(small)">
+							<a href="index.htm"><h2>Home</h2></a>
+					
+							<ul class="alt">
+							    <li><a href="about_us.htm">About us</a></li>
+								<li><a href="index.htm">Weather Forecast</a></li>
+						        
+							</ul>
+						</section>
+						<section class="4u 6u$(medium) 12u$(small)">
+							<a href="index.htm"><h2>Isle of Wight</h2></a>
+							
+							<ul class="alt">
+								<li><a href="soil_characteristics.htm">Soil Characteristics</a></li>
+						        <li><a href="flood.htm">Flood Information</a></li>
+						        <li><a href="Towns_Roads.htm">Towns and Roads</a></li>
+						        <li><a href="Rainfall.htm">Rainfall</a></li>
+							</ul>
+						</section>
+						<section class="4u$ 12u$(medium) 12u$(small)">
+							<h3>Contact Us</h3>
+							<ul class="icons">
+								<li><a href="#" class="icon rounded fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon rounded fa-facebook"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon rounded fa-pinterest"><span class="label">Pinterest</span></a></li>
+								<li><a href="#" class="icon rounded fa-google-plus"><span class="label">Google+</span></a></li>
+								<li><a href="#" class="icon rounded fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="tabular">
+								<li>
+									<h3>Address</h3>
+									County Hall<br>
+									High Street<br>
+									Newport<br>
+									Isle of Wight PO30 1UD
+									
+								</li>
+								<li>
+									<h3>Mail</h3>
+									<a href="#">customer.services@iow.gov.uk</a>
+								</li>
+								<li>
+									<h3>Phone</h3>
+									01983 821000
+								</li>
+							</ul>
+						</section>
+					</div>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved 2021.</li>
+						<li>Design: <a href="http://templated.co">&copy; TEMPLATED</a></li>
+						<li>Images: <a href="https://www.goodfon.com/wallpaper/the-needles-isle-of-wight-alum-bay-england-nidls-ostrov-uait.html">&copy; goodfon.com</a></li>
+					</ul>
+				</div>
+			</footer>
+
+	</body>
+</html>

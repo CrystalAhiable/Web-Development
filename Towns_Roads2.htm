@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!--
+	Interphase by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<title>Services</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+			<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico"/>
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.htm"><img src="images/iow_council_logo.jpg"></a>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.htm">Home</a></li>
+						<li><a href="about_us.htm">About us</a></li>
+						<li><a href="soil_characteristics.htm">Soil Characteristics</a></li>
+						<li><a href="flood.htm">Flood Warning</a></li>
+						<li><a href="Towns_Roads.htm">Towns and Roads</a></li>
+						<li><a href="Rainfall.htm">Rainfall</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="container">
+
+					<header class="major">
+						<h2>Towns and Roads</h2>
+						<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
+					</header>
+<div id="mapid" style="width: 100%; height: 400px;"></div>
+<script>
+var mymap = L.map('mapid').setView([50.700558, -1.290575], 11);
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {maxZoom: 18,attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',id: 'mapbox/streets-v11',
+tileSize: 512,
+zoomOffset: -1}).addTo(mymap);
+L.marker([50.700558, -1.290575]).addTo(mymap)
+.bindPopup("<b>Hello!</b><br />I'm Newport and I am the capital.").openPopup();
+L.circle([50.700558, -1.290575], 1500, {
+color: 'red',
+fillColor: '#f03',
+fillOpacity: 0.5
+}).addTo(mymap);
+;
+16
+var popup = L.popup();
+function onMapClick(e) {
+popup
+.setLatLng(e.latlng)
+.setContent("This is " + e.latlng.toString())
+.openOn(mymap);
+}
+mymap.on('click', onMapClick);
+</script></br>
+<object width= 100% height="700" data="./leaflet_webmap/index.html"></object>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<div class="row">
+						<section class="4u 6u(medium) 12u$(small)">
+							<a href="index.htm"><h2>Home</h2></a>
+					
+							<ul class="alt">
+							    <li><a href="about_us.htm">About us</a></li>
+								<li><a href="index.htm">Weather Forecast</a></li>
+						        
+							</ul>
+						</section>
+						<section class="4u 6u$(medium) 12u$(small)">
+							<a href="index.htm"><h2>Isle of Wight</h2></a>
+							
+							<ul class="alt">
+								<li><a href="Soil Characteristics.htm">Soil Characteristics</a></li>
+						        <li><a href="flood.htm">Flood Warning</a></li>
+						        <li><a href="Towns_Roads.htm">Towns and Roads</a></li>
+						        <li><a href="Rainfall.htm">Rainfall</a></li>
+							</ul>
+						</section>
+						<section class="4u$ 12u$(medium) 12u$(small)">
+							<h3>Contact Us</h3>
+							<ul class="icons">
+								<li><a href="#" class="icon rounded fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon rounded fa-facebook"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon rounded fa-pinterest"><span class="label">Pinterest</span></a></li>
+								<li><a href="#" class="icon rounded fa-google-plus"><span class="label">Google+</span></a></li>
+								<li><a href="#" class="icon rounded fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="tabular">
+								<li>
+									<h3>Address</h3>
+									County Hall<br>
+									High Street<br>
+									Newport<br>
+									Isle of Wight PO30 1UD
+								</li>
+								<li>
+									<h3>Mail</h3>
+									<a href="#">customer.services@iow.gov.uk</a>
+								</li>
+								<li>
+									<h3>Phone</h3>
+									01983 821000
+								</li>
+							</ul>
+						</section>
+					</div>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved 2021.</li>
+						<li>Design: <a href="http://templated.co">&copy; TEMPLATED</a></li>
+						<li>Images: <a href="https://www.goodfon.com/wallpaper/the-needles-isle-of-wight-alum-bay-england-nidls-ostrov-uait.html">&copy; goodfon.com</a></li>
+					</ul>
+				</div>
+			</footer>
+
+	</body>
+</html>
